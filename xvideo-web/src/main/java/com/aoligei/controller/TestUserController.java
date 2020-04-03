@@ -1,10 +1,11 @@
 package com.aoligei.controller;
 
+import com.aoligei.entity.TestUser;
 import com.aoligei.service.TestUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author JerAxxxxx
@@ -22,5 +23,28 @@ public class TestUserController {
     @GetMapping("/aaa")
     public String method() {
         return testUserService.selectByPrimaryKey(1).getName();
+    }
+
+    @PostMapping("/bbb")
+    public String method2(@Valid @RequestBody TestUser testUser) {
+        String password = testUser.getPassword();
+        return password + "123";
+    }
+
+    @RequestMapping("/")
+    public String toIndexPage() {
+        return "index";
+    }
+
+
+    @RequestMapping("/errorPage")
+    public String toErrorPage() {
+        return "error";
+    }
+
+
+    @RequestMapping("/homePage")
+    public String toHomePage() {
+        return "home";
     }
 }
