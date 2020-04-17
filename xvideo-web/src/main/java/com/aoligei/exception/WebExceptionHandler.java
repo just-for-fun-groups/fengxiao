@@ -1,5 +1,6 @@
 package com.aoligei.exception;
 
+import com.aoligei.entity.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -18,10 +19,17 @@ import java.util.Objects;
 public class WebExceptionHandler {
 
 
+    /**
+     * 对所有参数校验的异常捕获,并统一返回
+     *
+     * @param e
+     * @return
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public String exceptionHandler(MethodArgumentNotValidException e) {
+    public ResultVO exceptionHandler(MethodArgumentNotValidException e) {
         String message = Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage();
         log.error(message);
-        return message + "asd";
+        ResultVO resultVo = new ResultVO(message, "E001", "");
+        return resultVo;
     }
 }

@@ -7,6 +7,7 @@
         <module>xvideo-core</module>
         <module>xvideo-common</module>
         <module>xvideo-web</module>
+        <module>xvideo-logging</module>
     </modules>
 
     <groupId>com.aoligei</groupId>
@@ -87,6 +88,14 @@
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis-spring-boot-starter}</version>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.github.ulisesbocchio/jasypt-spring-boot-starter -->
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-spring-boot-starter</artifactId>
+                <version>3.0.2</version>
+            </dependency>
+
         </dependencies>
 
     </dependencyManagement>

@@ -3,9 +3,8 @@ package com.aoligei.controller;
 import com.aoligei.entity.TestUser;
 import com.aoligei.service.TestUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 /**
  * @author JerAxxxxx
@@ -26,7 +25,7 @@ public class TestUserController {
     }
 
     @PostMapping("/bbb")
-    public String method2(@Valid @RequestBody TestUser testUser) {
+    public String method2(@Validated @RequestBody TestUser testUser) {
         String password = testUser.getPassword();
         return password + "123";
     }
