@@ -9,3 +9,7 @@ mybatis:
   config-location: classpath:mapper/configure.xml
 
 
+#加密
+jasypt:
+  encryptor:
+    bean: encryptorBean

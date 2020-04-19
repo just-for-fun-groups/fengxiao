@@ -1,8 +1,8 @@
 package com.aoligei.exception;
 
 import com.aoligei.entity.vo.ResultVO;
+import com.aoligei.utlis.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -29,7 +29,6 @@ public class WebExceptionHandler {
     public ResultVO exceptionHandler(MethodArgumentNotValidException e) {
         String message = Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage();
         log.error(message);
-        ResultVO resultVo = new ResultVO(message, "E001", "");
-        return resultVo;
+        return ResultUtil.buildError(message);
     }
 }
